@@ -4,68 +4,50 @@ require_once 'UI/header.php';
 
     <!-- Empty post for adding new dvd -->
 
-<div class="container">
-    <div class="row masonry" data-columns>
-        <div class="item">
-            <div class="thumbnail">
-                <a href="adddvd.php"> <img src="UI/images/add.jpg" alt="" class="img-responsive"> </a>
+    <div class="wrap">
+        <?php require_once 'UI/sidebar.php'?>
+
+
+
+        <div class="items">
+
+            <div class="item">
+
+
+                 <img  src="UI/images/add.jpg" alt="" class="product">
                 <div class="caption">
-                    <h4><a href="#">Just click 'Add' to add new DVD-disc</a></h4>
-                    <br>
-                    <a href="addproduct.php" class="btn btn-success">Add +<i class="fa fa-arrow-right"></i></a>
+                    <h3><a href="AddProduct.php">Just click to add new Product</a></h3>
+                    <p class="descroption"> Simple add your <br> favorite product </p>
                 </div>
+
             </div>
-        </div>
         <!-- End -->
         <!-- DVD's from table (dvd-discs) -->
-        <?php
-    $dvddiscs = get_dvddiscs();?>
-        <?php
-    foreach ($dvddiscs as $dvd):
-        ?>
-    <div class="item">
-        <div class="thumbnail">
-            <img src="UI/images/<?=$dvd['img']?>">
-            <div class="caption">
-                <h3><?=$dvd['name']?></h3>
-                <h6><i class="glyphicon-barcode"></i><?=$dvd['scu']?> </h6>
-                <p>
-                    <?=$dvd['description']?>
-                </p>
-                <ul class="list-unstyled">
-                    <ul class="list-group-item-info">
-                        <li><?=$dvd['price']?> <i class="glyphicon-euro"></i></li>
-                        <li><?=$dvd['capacity']?> MB</li>
-                    </ul>
-                </ul>
-            </div>
-        </div>
-    </div>
-<?php endforeach;?>
-    </div>
-</div>
-    <!-- End -->
-    <!-- Footer menu -->
-    <div class="row">
-        <div class="container">
-            <ul class="nav nav-tabs">
-                <li>
-                    <a href="index.php"> New Products <span class="badge">18</span></a>
-                </li>
-                <li>
-                    <a href="books.php">Books <span class="badge">12</span></a>
-                </li>
-                <li class="active">
-                    <a href="dvd.php">DVD-disc <span class="badge">28</span></a>
-                </li>
-                <li>
-                    <a href="furniture.php">Furniture <span class="badge">28</span></a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    </div>
+            <?php
+            $dvddiscs = get_dvddiscs();
+            ?>
+            <?php
+            foreach ($dvddiscs as $dvd):
+                ?>
 
+                <div data-price="<?=$dvd['price']?>"  class="item">
+                    <a href="dvdid.php?dvd_id=<?=$dvd['id']?>"><img class="product" src="UI/images/<?=$dvd['img']?>"> </a>
+                    <div class="info">
+
+                        <h6 align="center"> <a href="dvdid.php?dvd_id=<?=$dvd['id']?>"><?=$dvd['name']?></a></h6>
+                        <p class="descroption">ID number: <?=$dvd['id']?></p>
+                        <p class="descroption">SKU number: <?=$dvd['scu']?></p>
+                        <p class="descroption">Price: <?=$dvd['price']?><i class="glyphicon-euro"></i></p>
+                        <p class="descroption">Capacity: <?=$dvd['capacity']?> MB </p>
+
+                    </div>
+                </div>
+
+            <?php endforeach; ?>
+    <!-- End -->
+        </div>
+    </div>
+    <!-- Footer menu -->
 <?php
 require_once 'UI/footer.php';
 ?>

@@ -1,68 +1,39 @@
 <?php
 require_once 'UI/header.php'; ?>
 <!-- Empty post for adding new book -->
-<div class="container">
-
-<div class="row masonry" data-columns>
-    <div class="item">
-        <div class="thumbnail">
-           <a href="addproduct.php"> <img src="UI/images/add.jpg" alt="" class="img-responsive"> </a>
-
+<div class="wrap">
+    <?php require_once 'UI/sidebar.php'?>
+    <div class="items">
+        <div class="item">
+            <a href="AddProduct.php"> <img src="UI/images/add.jpg" alt="" class="product"> </a>
             <div class="caption">
-                <h4><a href="#">Just click 'Add' to add new Book</a></h4>
-                <br>
-                <a href="addproduct.php" class="btn btn-success">Add +<i class="fa fa-arrow-right"></i></a>
+                <h3><a href="#">Just click to add new Product</a></h3>
+                <p class="descroption"> Simple add your <br> favorite product </p>
             </div>
         </div>
-    </div>
     <!-- End -->
     <!-- Books from table (Books) -->
-<?php $books = get_books();
-foreach ($books as $book):
-    ?>
-        <div class="item">
-            <div class="thumbnail">
-                <img src="UI/images/<?=$book['img']?>">
-
-                <div class="caption">
-
-                    <h3><?=$book['name']?></h3>
-                    <h6><i class="glyphicon-barcode"></i><?=$book['scu']?> </h6>
-                    <p>
-                        <i><?=$book['author']?></i>
-                        </br>
-                        <?=$book['description']?>
-                    </p>
-                    <ul class="list-unstyled">
-                        <li><?=$book['price']?> <i class="glyphicon-euro"></i></li>
-                        <li><?=$book['weight']?> kg</li>
-                    </ul>
+        <?php
+        $books = get_books();
+        ?>
+        <?php
+        foreach ($books as $book):
+            ?>
+            <div data-price="<?=$book['price']?>"  class="item">
+                <a href="bookid.php?book_id=<?=$book['id']?>"><img class="product" src="UI/images/<?=$book['img']?>"></a>
+                <div class="info">
+                    <h6 align="center"> <a href="bookid.php?book_id=<?=$book['id']?>"><?=$book['name']?></a></h6>
+                    <p class="descroption">ID number: <?=$book['id']?></p>
+                    <p class="descroption">SKU number: <?=$book['scu']?></p>
+                    <p class="descroption">Price: <?=$book['price']?><i class="glyphicon-euro"></i></p>
+                    <p class="descroption">Weight: <?=$book['weight']?> kg</p>
                 </div>
             </div>
-        </div>
         <?php endforeach; ?>
-</div>
+    </div>
 </div>
 <!-- End -->
 <!-- Footer menu -->
-<div class="row">
-    <div class="container">
-        <ul class="nav nav-tabs">
-            <li>
-                <a href="index.php"> New Products <span class="badge">18</span></a>
-            </li>
-            <li class="active">
-                <a href="books.php">Books <span class="badge">12</span></a>
-            </li>
-            <li>
-                <a href="dvd.php">DVD-disc <span class="badge">28</span></a>
-            </li>
-            <li>
-                <a href="furniture.php">Furniture <span class="badge">28</span></a>
-            </li>
-        </ul>
-    </div>
-</div>
 <?php
 require_once 'UI/footer.php';
 ?>

@@ -3,6 +3,7 @@
 <?php
     require_once 'DB/database.php';
     require_once 'DB/function.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -10,12 +11,19 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Product list</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
 
     <!-- Bootstrap Template -->
     <link href="UI/bootstrap3/css/bootstrap.css" rel="stylesheet">
-    <link href="UI/bootstrap3/css/font-awesome.css" rel="stylesheet">
-    <link href="UI/bootstrap3/css/style.css" rel="stylesheet">
+    <link href="UI/bootstrap3/css/footer.css" rel="stylesheet">
+    <link href="UI/bootstrap3/css/newstyle.css" rel="stylesheet">
     <!-- End of Bootstrap Template -->
+    <!-- JS scripts -->
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!-- end -->
 </head>
 <body>
 <div class="navbar navbar-inverse navbar-static-top">
@@ -36,7 +44,11 @@ This Product list categories, to add new or change them you need do this in data
                     <?=$category["name"]?></a></li>
                 <?php endforeach; ?>
 
+
             </ul>
+            <!--End-->
         </div>
     </div>
 </div>
+
+
